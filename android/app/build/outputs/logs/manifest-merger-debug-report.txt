@@ -23,8 +23,8 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\pr
 	android:name
 		INJECTED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml
 manifest
-ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:1:1-45:12
-MERGED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:1:1-45:12
+ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:1:1-46:12
+MERGED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:1:1-46:12
 INJECTED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 INJECTED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 INJECTED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\debug\AndroidManifest.xml:1:1-7:12
@@ -68,17 +68,21 @@ MERGED from [com.getkeepsafe.relinker:relinker:1.4.5] C:\Users\praka\.gradle\cac
 	xmlns:android
 		ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:1:11-69
 queries
-ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:39:5-44:15
-intent#action:name:android.intent.action.PROCESS_TEXT+data:mimeType:text/plain
-ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:40:9-43:18
-action#android.intent.action.PROCESS_TEXT
-ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:41:13-72
+ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:39:5-45:15
+package#com.whatsapp
+ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:40:9-48
 	android:name
-		ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:41:21-70
+		ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:40:18-45
+intent#action:name:android.intent.action.PROCESS_TEXT+data:mimeType:text/plain
+ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:41:9-44:18
+action#android.intent.action.PROCESS_TEXT
+ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:42:13-72
+	android:name
+		ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:42:21-70
 data
-ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:42:13-50
+ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:43:13-50
 	android:mimeType
-		ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:42:19-48
+		ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\main\AndroidManifest.xml:43:19-48
 uses-permission#android.permission.INTERNET
 ADDED from D:\Scratch\flutter-apps\whatsapp_msg_scheduler\android\app\src\debug\AndroidManifest.xml:6:5-66
 	android:name

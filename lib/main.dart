@@ -40,6 +40,8 @@ class _MessageSchedulerPageState extends State<MessageSchedulerPage> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _messageController = TextEditingController();
   DateTime? _scheduledDateTime;
+  Timer? _countdownTimer;
+  String _countdownText = '';
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
@@ -53,6 +55,7 @@ class _MessageSchedulerPageState extends State<MessageSchedulerPage> {
   void dispose() {
     _phoneController.dispose();
     _messageController.dispose();
+    _countdownTimer?.cancel();
     super.dispose();
   }
 
@@ -63,6 +66,56 @@ class _MessageSchedulerPageState extends State<MessageSchedulerPage> {
       android: initializationSettingsAndroid,
     );
     await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  }
+
+  void _startCountdown() {
+    _countdownTimer?.cancel();
+
+    _countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (!mounted) {
+        timer.cancel();
+        return;
+      }
+
+      if (_scheduledDateTime == null) {
+        setState(() {
+          _countdownText = '';
+        });
+        timer.cancel();
+        return;
+      }
+
+      final now = DateTime.now();
+      final difference = _scheduledDateTime!.difference(now);
+
+      if (difference.isNegative) {
+        setState(() {
+          _countdownText = 'Message time has passed';
+        });
+        timer.cancel();
+        return;
+      }
+
+      setState(() {
+        _countdownText = _formatDuration(difference);
+      });
+    });
+  }
+
+  String _formatDuration(Duration duration) {
+    final days = duration.inDays;
+    final hours = duration.inHours.remainder(24);
+    final minutes = duration.inMinutes.remainder(60);
+    final seconds = duration.inSeconds.remainder(60);
+
+    final parts = <String>[];
+
+    if (days > 0) parts.add('$days days');
+    if (hours > 0) parts.add('$hours hours');
+    if (minutes > 0) parts.add('$minutes minutes');
+    parts.add('$seconds seconds');
+
+    return 'Time until next message: ${parts.join(', ')}';
   }
 
   Future<void> _scheduleMessage() async {
@@ -103,6 +156,9 @@ class _MessageSchedulerPageState extends State<MessageSchedulerPage> {
           UILocalNotificationDateInterpretation.absoluteTime,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
     );
+
+    // Start countdown timer
+    _startCountdown();
 
     // Schedule message sending
     await _sendScheduledMessage();
@@ -206,6 +262,24 @@ class _MessageSchedulerPageState extends State<MessageSchedulerPage> {
               onPressed: _scheduleMessage,
               child: const Text('Schedule Message'),
             ),
+            const SizedBox(height: 16),
+            if (_countdownText.isNotEmpty)
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.green.shade50,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.green.shade200),
+                ),
+                child: Text(
+                  _countdownText,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
           ],
         ),
       ),
