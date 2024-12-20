@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:whatsapp_msg_scheduler/main.dart';
+import 'package:whatsapp_msg_scheduler/main_original.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
